@@ -1,6 +1,8 @@
 const guessInput = document.querySelector('input')
 const guessBTN = document.querySelector('.btn-guess')
 const newBTN = document.querySelector('.btn-new')
+const clearBTN = document.querySelector('.results-clear')
+const sortBTN = document.querySelector('.results-sort')
 const alertWindow = document.querySelector('.alert')
 const alertMessage = document.querySelector('.alert-message')
 const alertCounter = document.querySelector('.alert-counter')
@@ -29,6 +31,8 @@ const alertHints = ['Last guess was too low!', 'Last guess was too high!']
 
 guessBTN.addEventListener('click', guessNumber)
 newBTN.addEventListener('click', newGame)
+clearBTN.addEventListener('click', clearResults)
+sortBTN.addEventListener('click', sortResults)
 
 showLocal()
 
@@ -81,6 +85,32 @@ function newGame() {
     showLocal()
 }
 
+function clearResults() {
+    if ( counterTurns.length == 0 ) {
+        alert('Play the game firstly')
+    }
+    else {
+        localStorage.clear()
+        counterTurns = []
+        showLocal()
+    }
+}
+
+function sortResults() {
+    if ( counterTurns.length == 0 ) {
+        alert('Play the game firstly')
+    }
+    else {
+        counterTurns.sort(function(a, b) {
+                return a.turns - b.turns
+            }
+        )
+        localStorage.setItem('results', JSON.stringify(counterTurns))
+        resultBoard.innerHTML = ''
+        showLocal()
+    }
+}
+
 function generateNumber() {
     return Math.floor(Math.random() * 100) + 1
 }
@@ -93,7 +123,7 @@ function endGame() {
     guessBTN.disabled = true
     alertCounter.innerHTML = `You spent <b>${counter}</b> turns`
     counterTurns.push(turnConstructor(counter))
-    localStorage.setItem('results', JSON.stringify(counterTurns));
+    localStorage.setItem('results', JSON.stringify(counterTurns))
 }
 
 function turnConstructor(turns) {
@@ -115,5 +145,8 @@ function showLocal() {
             liItem.innerHTML = element.turns + ' turns. Time: ' + element.time
             resultBoard.append(liItem)
         });
+    }
+    else {
+        resultBoard.innerHTML = ''
     }
 }

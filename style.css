@@ -36,7 +36,7 @@ p {
     width: 100%;
     max-width: 500px;
 
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 input {
@@ -91,5 +91,8 @@ button {
     display: block;
 }
 
+.results-clear {
+    margin: 10px 0;
+}
 
 
