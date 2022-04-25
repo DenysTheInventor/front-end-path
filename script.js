@@ -30,15 +30,7 @@ const alertHints = ['Last guess was too low!', 'Last guess was too high!']
 guessBTN.addEventListener('click', guessNumber)
 newBTN.addEventListener('click', newGame)
 
-if (localStorage.getItem("results") !== null) {
-    counterTurns = JSON.parse(localStorage.getItem('results'))
-
-    counterTurns.forEach(element => {
-        let liItem = document.createElement('li')
-        liItem.innerHTML = element.turns + ' turns. Time: ' + element.time
-        resultBoard.append(liItem)
-    });
-}
+showLocal()
 
 function guessNumber() {
     let inputValue = guessInput.value
@@ -85,11 +77,12 @@ function newGame() {
     alertCounter.innerHTML = ''
     guessNumbers = []
     counter = 0
+    resultBoard.innerHTML = ''
+    showLocal()
 }
 
 function generateNumber() {
-    // return Math.floor(Math.random() * 100) + 1
-    return 90
+    return Math.floor(Math.random() * 100) + 1
 }
 
 function endGame() {
@@ -110,5 +103,17 @@ function turnConstructor(turns) {
     return {
         turns: turns,
         time: currentDate
+    }
+}
+
+function showLocal() {
+    if (localStorage.getItem("results") !== null) {
+        counterTurns = JSON.parse(localStorage.getItem('results'))
+    
+        counterTurns.forEach(element => {
+            let liItem = document.createElement('li')
+            liItem.innerHTML = element.turns + ' turns. Time: ' + element.time
+            resultBoard.append(liItem)
+        });
     }
 }
