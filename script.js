@@ -1,6 +1,7 @@
 const guessInput = document.querySelector('input')
 const guessBTN = document.querySelector('.btn-guess')
 const newBTN = document.querySelector('.btn-new')
+const timeBTN = document.querySelector('.btn-time')
 const clearBTN = document.querySelector('.results-clear')
 const sortBTN = document.querySelector('.results-sort')
 const alertWindow = document.querySelector('.alert')
@@ -16,6 +17,8 @@ let guessNumbers = []
 let counter = 0
 let counterTurns = []
 
+let gameStatus = false
+
 const alertObjects = [
     {
         class: 'alert-wrong',
@@ -27,12 +30,13 @@ const alertObjects = [
     }
 ]
 
-const alertHints = ['Last guess was too low!', 'Last guess was too high!']
+const alertHints = ['Last guess was too low!', 'Last guess was too high!', 'Time is over']
 
 guessBTN.addEventListener('click', guessNumber)
 newBTN.addEventListener('click', newGame)
 clearBTN.addEventListener('click', clearResults)
 sortBTN.addEventListener('click', sortResults)
+timeBTN.addEventListener('click', speedGame)
 
 showLocal()
 
@@ -149,4 +153,14 @@ function showLocal() {
     else {
         resultBoard.innerHTML = ''
     }
+}
+
+function speedGame() {
+    newGame()
+    setTimeout(() => {
+        if ( gameStatus == false ) {
+            guessBTN.disabled = true
+            alertHint.innerHTML = alertHints[2]
+        }
+    }, 500);
 }

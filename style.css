@@ -62,7 +62,7 @@ button {
 .alert-message {
     width: 100%;
     padding: 2px 0;
-    margin: 20px 0;
+    margin: 10px 0;
     font-weight: bold;
     color: white;
 }
@@ -83,7 +83,7 @@ button {
     background-color: green;
 }
 
-.btn-new, .hint-hidden {
+.btn-new, .hint-hidden, .timeless, .btn-time {
     display: none;
 }   
 
