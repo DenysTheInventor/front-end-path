@@ -31,11 +31,11 @@ guessBTN.addEventListener('click', guessNumber)
 newBTN.addEventListener('click', newGame)
 
 if (localStorage.getItem("results") !== null) {
-    counterTurns = localStorage.getItem('results')
+    counterTurns = JSON.parse(localStorage.getItem('results'))
 
     counterTurns.forEach(element => {
         let liItem = document.createElement('li')
-        liItem.innerHTML = element
+        liItem.innerHTML = element.turns + ' turns. Time: ' + element.time
         resultBoard.append(liItem)
     });
 }
@@ -99,6 +99,16 @@ function endGame() {
     newBTN.classList.add('btn-show')
     guessBTN.disabled = true
     alertCounter.innerHTML = `You spent <b>${counter}</b> turns`
-    counterTurns.push(counter)
-    localStorage.setItem('results', counterTurns);
+    counterTurns.push(turnConstructor(counter))
+    localStorage.setItem('results', JSON.stringify(counterTurns));
+}
+
+function turnConstructor(turns) {
+    let today = new Date();
+    let currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+
+    return {
+        turns: turns,
+        time: currentDate
+    }
 }
