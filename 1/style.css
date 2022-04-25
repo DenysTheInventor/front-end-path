@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    font-size: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.wrapper-inner {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    padding: 20px 0;
+    font-size: 40px;
+}
+
+h2 {
+    padding: 20px 0;
+}
+
+p {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 20px 0;
+}
+
+input {
+    padding: 0 5px;
+    font-size: 18px;
+}
+
+input::placeholder {
+    font-size: 18px;
+}
+
+button {
+    padding: 0 5px;
+}
+
+.alert {
+    width: 100%;
+    max-width: 500px;
+
+    display: none;
+}
+
+.alert-message {
+    width: 100%;
+    padding: 2px 0;
+    margin: 20px 0;
+    font-weight: bold;
+    color: white;
+}
+
+.alert-wrong {
+    background-color: red;
+}
+
+.alert-right {
+    background-color: green;
+}
+
+.btn-new, .hint-hidden {
+    display: none;
+}   
+
+.alert-show, .btn-show {
+    display: block;
+}
+
+
+
