@@ -16,6 +16,7 @@ let guessingNumber = 50
 
 let counter = 0
 let stopwatch = 0
+let stopwatchInterval = 0
 
 let guessNumbers = []
 let counterTurns = []
@@ -149,6 +150,7 @@ function endGame() {
     localStorage.setItem('results', JSON.stringify(counterTurns))
 
     clearInterval(stopwatch)
+    clearTimeout(stopwatchInterval)
     timeBTN.disabled = false
 }
 
@@ -191,7 +193,7 @@ function countSeconds() {
         startSeconds--
         timerArea.innerHTML = startSeconds
     }, 1000)
-    setTimeout(() => {
+    stopwatchInterval = setTimeout(() => {
         if ( gameStatus == false ) {
             clearInterval(stopwatch)
             endGame()
