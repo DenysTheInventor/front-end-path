@@ -10,11 +10,14 @@ const alertCounter = document.querySelector('.alert-counter')
 const alertNumbers = document.querySelector('.alert-numbers')
 const resultBoard = document.querySelector('ol')
 const alertHint = document.querySelector('.alert-hint')
+const timerArea = document.querySelector('.timer')
 
-let guessingNumber = generateNumber()
+let guessingNumber = 50
+
+let counter = 0
+let stopwatch = 0
 
 let guessNumbers = []
-let counter = 0
 let counterTurns = []
 
 let gameStatus = false
@@ -23,6 +26,10 @@ const alertObjects = [
     {
         class: 'alert-wrong',
         text: 'wrong'
+    },
+    {
+        class: 'alert-wrong',
+        text: 'Time is over. Start new game'
     },
     {
         class: 'alert-right',
@@ -59,6 +66,7 @@ function guessNumber() {
     });
 
     alertWindow.classList.add('alert-show')
+    gameStatus = false
 
     if ( guessingNumber < inputValue ) {
         alertMessage.classList.add(alertObjects[0].class)
@@ -71,6 +79,7 @@ function guessNumber() {
         alertHint.innerHTML = alertHints[0]
     }
     else {
+        gameStatus = true
         endGame()
     }
 }
@@ -78,6 +87,7 @@ function guessNumber() {
 function newGame() {
     guessingNumber = generateNumber()
     guessBTN.disabled = false
+    timerArea.className = 'timer'
     alertWindow.className = 'alert'
     alertMessage.className = 'alert-message'
     alertHint.className = 'alert-hint'
@@ -120,14 +130,26 @@ function generateNumber() {
 }
 
 function endGame() {
-    alertMessage.classList.add(alertObjects[1].class)
-    alertMessage.innerHTML = alertObjects[1].text
+    if ( gameStatus == true ) {
+        alertMessage.classList.add(alertObjects[2].class)
+        alertMessage.innerHTML = alertObjects[2].text
+        timeBTN.classList.add('btn-show')
+        alertCounter.innerHTML = `You spent <b>${counter}</b> turns`
+    }
+    else {
+        alertMessage.classList.add(alertObjects[1].class)
+        alertMessage.innerHTML = alertObjects[1].text
+        timeBTN.classList.remove('btn-show')
+        counter = 'Failed'
+    }    
     alertHint.classList.add('hint-hidden')
     newBTN.classList.add('btn-show')
     guessBTN.disabled = true
-    alertCounter.innerHTML = `You spent <b>${counter}</b> turns`
     counterTurns.push(turnConstructor(counter))
     localStorage.setItem('results', JSON.stringify(counterTurns))
+
+    clearInterval(stopwatch)
+    timeBTN.disabled = false
 }
 
 function turnConstructor(turns) {
@@ -157,10 +179,25 @@ function showLocal() {
 
 function speedGame() {
     newGame()
+    countSeconds()
+}
+
+function countSeconds() {
+    let startSeconds = 30
+    timeBTN.disabled = true
+    timerArea.classList.add('timer-show')
+    
+    stopwatch = setInterval(() => {
+        startSeconds--
+        timerArea.innerHTML = startSeconds
+    }, 1000)
     setTimeout(() => {
         if ( gameStatus == false ) {
-            guessBTN.disabled = true
-            alertHint.innerHTML = alertHints[2]
+            clearInterval(stopwatch)
+            endGame()
         }
-    }, 500);
+        else {
+            timeBTN.disabled = false
+        }
+    }, 30000)
 }

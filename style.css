@@ -79,15 +79,21 @@ button {
     padding-left: 40px;
 }
 
+.timer {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 .alert-right {
     background-color: green;
 }
 
-.btn-new, .hint-hidden, .timeless, .btn-time {
+.btn-new, .hint-hidden, .timeless, .btn-time, .timer {
     display: none;
 }   
 
-.alert-show, .btn-show {
+.alert-show, .btn-show, .timer-show {
     display: block;
 }
 
