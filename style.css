@@ -20,12 +20,26 @@
     width: 100%;
 }
 
-.header-inner {
+.header-inner__name, .header-inner__courses {
     height: 120px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.header-inner__courses {
+    height: 60px;
+}
+
+.header-course {
+    margin: 0 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.header-course:visited {
+    color: rgb(101, 224, 105);
 }
 
 .header-logo {
