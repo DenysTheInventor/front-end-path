@@ -56,13 +56,17 @@
 }
 
 .lesson {
-    width: 200px;
+    width: 220px;
     height: 100px;
 
     border: 1px solid black;
     border-radius: 10px;
 
     margin: 0 10px;
+}
+
+.lesson-body {
+    height: 70px;
 
     display: flex;
     flex-direction: column;
@@ -70,8 +74,44 @@
     align-items: center;
 }
 
+.lesson-footer {
+    height: 30px;
+    padding: 10px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.lesson-tag {
+    font-style: 10px;
+    border-radius: 2px;
+    padding: 2px;
+    margin: 0 2px;
+}
+
+.lesson-html {
+    background-color: rgb(224, 129, 65);
+}
+
+.lesson-css {
+    background-color: rgb(63, 93, 192);
+}
+
+.lesson-js {
+    background-color: rgb(211, 196, 84);
+}
+
+.lesson-week {
+    background-color: rgb(156, 156, 168);
+}
+
 .lesson:hover {
     box-shadow: 10px 7px 21px 5px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 7px 21px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 7px 21px 5px rgba(0,0,0,0.75);
+}
+
+.lesson-tag:hover {
+    cursor: grab;
 }
