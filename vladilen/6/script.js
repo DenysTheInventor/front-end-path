@@ -16,6 +16,7 @@ while(true) {
     }
 }
 
+
 // task2
 let correctAnswers = 0
 let incorrectAnswers = 0
@@ -63,6 +64,7 @@ test.forEach(task => {
 
 alert(`Конец теста! Правильные ответы - ${correctAnswers}; Неправильные ответы - ${incorrectAnswers}.`)
 
+
 // task3
 
 const newTest = [
@@ -96,3 +98,44 @@ newTest.forEach(task => {
         alert(`Неверно. ${task.rightAnswer}`)
     }
 })
+
+
+// task4
+
+// while
+let counter = 0
+
+while(counter < 3) {
+    let newStudent = prompt('Введите имя нового студента!');
+    if (newStudent) {
+        newStudent = newStudent.trim();
+        alert(`Добро пожаловать, ${newStudent}!`)
+    }
+    counter++
+}
+
+// do while
+counter = 0
+
+do {
+    let newStudent = prompt('Введите имя нового студента!');
+    if (newStudent) {
+        newStudent = newStudent.trim();
+        alert(`Добро пожаловать, ${newStudent}!`)
+    }
+    counter++
+}
+while (counter < 3)
+
+
+// task5
+
+let count = 0
+let sum = 0
+
+while ( count <= 100 ) {
+    sum += count
+    count++
+}
+
+console.log (sum)
