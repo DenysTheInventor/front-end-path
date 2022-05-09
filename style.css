@@ -130,3 +130,13 @@
 .lesson-tag:hover {
     cursor: grab;
 }
+
+@media screen and (max-width: 992px) {
+    .header-inner__name {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .header-name {
+        margin: 0;
+    }
+}
