@@ -39,4 +39,51 @@ const fillArray = (length, value) => {
     return newArray
 }
 
-console.log(fillArray(3, 'azaza'))
+// Метод fill
+const finalArray = newArray.fill(3, 'a')
+
+console.log(fillArray(3, 'azaza'), finalArray)
+
+// Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
+// То есть дефисы удаляются, а все слова после них получают заглавную букву.
+// camelize("background-color") == 'backgroundColor';
+
+const camelize = (str) => {
+    let strArr = str.split('-')
+
+    for (let i = 0; i < strArr.length; i++) {
+        strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].slice(1)
+    }
+
+    return strArr.join('')
+}
+
+function newCamelize(str) {
+    return str
+      .split('-') // разбивает 'my-long-word' на массив ['my', 'long', 'word']
+      .map(
+        // Переводит в верхний регистр первые буквы всех элементом массива за исключением первого
+        // превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']
+        (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+      )
+      .join(''); // соединяет ['my', 'Long', 'Word'] в 'myLongWord'
+  }
+
+console.log(camelize('background-color'), camelize('-webkit-transition'), camelize('list-style-image'), newCamelize('background-color'))
+
+
+// Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
+
+// Функция должна возвращать новый массив и не изменять исходный.
+
+const filterRange = (arr, a, b) => {
+    return arr.filter((element) => a < element && element < b )
+}
+
+console.log(filterRange([1, 2, 3, 4, 5, 6, 7, 8], 3, 7))
+
+
+// Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b.
+
+// Функция должна изменять принимаемый массив и ничего не возвращать.
+
