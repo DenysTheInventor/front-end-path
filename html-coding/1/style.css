@@ -1,5 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.data-container__item:hover {
+    cursor: pointer;
+}
+
+.item-title {
+    font-weight: 900;
+}
+
 .related-characters {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style-type: none;
+}
+
+.related-character {
+    padding: 5px;
+    margin: 2px 5px;
+    border: 1px solid black;
 }
 
 .hide {
