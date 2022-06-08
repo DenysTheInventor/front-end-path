@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.post__title {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.post__text, .post__comments, .post-comment {
+    padding: 15px 0;
+}
+
+.post__comments-text {
+    font-size: 20px;
+    font-weight: 900;
+    color: green;
+    border-bottom: 1px solid black;
+}
+
+.post-comment__text {
+    padding: 5px 0;
+}
+
+.post-comment__author {
+    font-weight: 900;
+}
