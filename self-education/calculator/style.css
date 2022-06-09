@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: lightgrey;
+}
+
+.container {
+    width: 100%;
+    max-width: 640px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.calc-app {
+    width: 100%;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+.calc-app__screen,
+.calc-app__control,
+.calc-app__result {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.calc-app__screen {
+    justify-content: center;
+    position: relative;
+}
+
+.calc-app__input {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.calc-app__reset {
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(241, 246, 246);
+}
+
+.calc-app__reset:hover {
+    cursor: pointer;
+}
+
+.calc-app__input::placeholder {
+    padding: 0 10px;
+}
+
+.calc-app__button {
+    width: 30%;
+    height: 40px;
+
+    margin: 10px;
+
+    background-color: aliceblue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-app__math__result {
+    width: 15%;
+    background-color: azure;
+}
+
+.calc-app__button:hover {
+    border: 1px solid black;
+}
