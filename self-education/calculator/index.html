@@ -13,27 +13,36 @@
             <h1>Calculator app</h1>
             <div class="calc-app">
                 <div class="calc-app__screen">
-                    <input class="calc-app__input" type="text" placeholder="Enter">
+                    <div class="calc-app__input">0</div>
                     <div class="calc-app__reset" data-value="reset">&times;</div>
                 </div>
-                <div class="calc-app__control">
-                    <div class="calc-app__button" data-value="1">1</div>
-                    <div class="calc-app__button" data-value="2">2</div>
-                    <div class="calc-app__button" data-value="3">3</div>
-                    <div class="calc-app__button" data-value="4">4</div>
-                    <div class="calc-app__button" data-value="5">5</div>
-                    <div class="calc-app__button" data-value="6">6</div>
-                    <div class="calc-app__button" data-value="7">7</div>
-                    <div class="calc-app__button" data-value="8">8</div>
-                    <div class="calc-app__button" data-value="9">9</div>
-                </div>
-                <div class="calc-app__result">
-                    <div class="calc-app__button calc-app__math__result" data-value="+">+</div>
-                    <div class="calc-app__button calc-app__math__result" data-value="-">-</div>
-                    <div class="calc-app__button calc-app__math__result" data-value="/">/</div>
-                    <div class="calc-app__button calc-app__math__result" data-value="*">*</div>
-                    <div class="calc-app__button calc-app__math__result" data-value="=">=</div>
-                </div>
+                <div class="calc-app-body">
+                    <div class="calc-app__result">
+                        <div class="calc-app__button calc-app__math__result" data-value="+">+</div>
+                        <div class="calc-app__button calc-app__math__result" data-value="-">-</div>
+                        <div class="calc-app__button calc-app__math__result" data-value="/">/</div>
+                        <div class="calc-app__button calc-app__math__result" data-value="*">*</div>
+                    </div>
+                    <div class="calc-app__control">
+                        <div class="calc-app__control_numbers">
+                            <div class="calc-app__button" data-value="1">1</div>
+                            <div class="calc-app__button" data-value="2">2</div>
+                            <div class="calc-app__button" data-value="3">3</div>
+                            <div class="calc-app__button" data-value="4">4</div>
+                            <div class="calc-app__button" data-value="5">5</div>
+                            <div class="calc-app__button" data-value="6">6</div>
+                            <div class="calc-app__button" data-value="7">7</div>
+                            <div class="calc-app__button" data-value="8">8</div>
+                            <div class="calc-app__button" data-value="9">9</div>
+                        </div>
+                        <div class="calc-app__button calc-app__control_equal" data-value="=">=</div>
+                    </div>
+                    <div class="calc-app__add">
+                        <div class="calc-app__button" data-value="0">0</div>
+                        <div class="calc-app__button" data-value="C">C</div>
+                        <div class="calc-app__button" data-value=".">.</div>
+                    </div>
+                </div>            
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@
 
 .container {
     width: 100%;
-    max-width: 640px;
+    max-width: 480px;
     padding: 0 10px;
     margin: 0 auto;
 }
@@ -27,17 +27,27 @@ h1 {
 .calc-app {
     width: 100%;
     padding: 5px;
+    margin: 10px;
     background-color: #fff;
     border: 1px solid black;
 }
 
 .calc-app__screen,
-.calc-app__control,
-.calc-app__result {
+.calc-app__control_numbers,
+.calc-app__result,
+.calc-app__add {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.calc-app__control {
+    display: flex;
+}
+
+.calc-app__control_numbers {
+    width: 80%;
 }
 
 .calc-app__screen {
@@ -49,18 +59,30 @@ h1 {
     width: 100%;
     height: 40px;
     padding: 0 10px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    border: 1px solid black;
+}
+
+.calc-app__input:hover {
+    -webkit-box-shadow: inset 0px 0px 6px -2px #000000; 
+    box-shadow: inset 0px 0px 6px -2px #000000;
 }
 
 .calc-app__reset {
     position: absolute;
-    right: 0;
+    top: 2px;
+    right: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 900;
     font-size: 20px;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background-color: rgb(241, 246, 246);
 }
 
@@ -68,21 +90,28 @@ h1 {
     cursor: pointer;
 }
 
-.calc-app__input::placeholder {
-    padding: 0 10px;
-}
-
 .calc-app__button {
     width: 30%;
     height: 40px;
 
-    margin: 10px;
+    margin: 10px 0;
 
     background-color: aliceblue;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.calc-app__control_equal {
+    width: 20%;
+    height: inherit;
+
+    background-color: rgb(233, 147, 76);
+}
+
+.calc-app__button:hover {
+    cursor: pointer;
 }
 
 .calc-app__math__result {
@@ -92,4 +121,10 @@ h1 {
 
 .calc-app__button:hover {
     border: 1px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+    .calc-app__control_numbers .calc-app__button {
+      width: 30%;
+    }
 }

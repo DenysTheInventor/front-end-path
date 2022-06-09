@@ -1,24 +1,41 @@
 const CALC_INPUT = document.querySelector('.calc-app__input')
 const CALC_AREA = document.querySelector('.calc-app')
+const BODY = document.querySelector('body')
+
+const signs = ['/', '*', '+', '-', '.']
 
 const getInputValue = () => {
-    return CALC_INPUT.value
+    return CALC_INPUT.innerText
+}
+
+const checkLastSign = () => {
+    const inputValue = getInputValue()
+    return isNaN(inputValue[inputValue.length-1])
+}
+
+const checkValueIsSign = (value) => {
+    return signs.find(i => i === value)
 }
 
 const setInputValue = (value) => {
-    if (CALC_INPUT.value === '0') {
-        CALC_INPUT.value = ''
+    if (CALC_INPUT.innerText === '0') {
+        CALC_INPUT.innerText = ''
     }
 
-    CALC_INPUT.value += value
+    if (checkLastSign() && checkValueIsSign(value)) {
+        console.log('Wrong operation')
+    }
+    else {
+        CALC_INPUT.innerText += value
+    }
 }
 
-const reserInputValue = () => {
-    CALC_INPUT.value = 0
+const resetInputValue = () => {
+    CALC_INPUT.innerText = 0
 }
 
 const countResult = () => {
-    CALC_INPUT.value = eval(CALC_INPUT.value)
+    CALC_INPUT.innerText = eval(CALC_INPUT.innerText)
 }
 
 CALC_AREA.addEventListener('click', (event) => {
@@ -32,12 +49,20 @@ CALC_AREA.addEventListener('click', (event) => {
             return
         }
 
-        if (pressedBTN === 'reset') {
-            reserInputValue()
+        if (pressedBTN === 'reset' || pressedBTN === 'C') {
+            resetInputValue()
             return
         }
 
         setInputValue(pressedBTN)
+    }
+})
+
+BODY.addEventListener('keydown', (event) => {
+    const { target } = event
+
+    if (event.key = 'Enter') {
+        countResult()
     }
 })
 
