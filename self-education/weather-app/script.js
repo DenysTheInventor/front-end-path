@@ -29,7 +29,8 @@ class GEO {
             })
             .then((location) => {
                 const currentLocation = location.results[0].formatted
-                this.setLocationBlock(currentLocation)
+                const message = `Your location is: ${currentLocation}`
+                this.setLocationBlock(message)
             })
             .catch((error) => {
                 console.error(error)
