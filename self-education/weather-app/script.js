@@ -7,6 +7,47 @@ const API_KEY = 'afd602ae8eeb088bfbefba1c772e31e9'
 
 const FLAG_URL = 'https://countryflagsapi.com/png'
 
+const GEOCODE_API = 'https://api.opencagedata.com/geocode/v1/json?q=' 
+
+class GEO {
+    constructor(url) {
+        this.url = url
+    }
+
+    setLocationBlock = (text) => {
+        const locationArea = document.querySelector('.weather-app__system-location')
+              locationArea.innerHTML +=  `
+                <b>${text}</b>
+              `
+    } 
+    
+    showCityInfo = (coordinates) => {
+        const { latitude, longitude } = coordinates.coords
+        fetch(`${this.url}${latitude}+${longitude}&key=4b7dfa8467a24ba49769abc1319178e4`)
+            .then((resolve) => {
+                return resolve.json()
+            })
+            .then((location) => {
+                const currentLocation = location.results[0].formatted
+                this.setLocationBlock(currentLocation)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
+    
+    setErrorArea = () => {
+        this.setLocationBlock('Well-well-well. You hide from me your location. So read message above!')
+    }
+
+    checkPosition = () => {
+        navigator.geolocation.getCurrentPosition(this.showCityInfo, this.setErrorArea)
+    }
+}
+
+const locationObj = new GEO(GEOCODE_API)
+locationObj.checkPosition()
+
 weatherForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
