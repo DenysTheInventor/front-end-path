@@ -77,7 +77,8 @@ h1 {
 
 .weather-app__header,
 .weather-app__main,
-.weather-app__footer {
+.weather-app__footer,
+.weather-app__system {
     width: 100%;
     height: 100px;
     padding: 0 20px;
@@ -99,6 +100,10 @@ h1 {
     width: 26px;
 }
 
+.weather-app__system {
+    justify-content: center;
+}
+
 .loader {
     position: absolute;
     margin: 200px auto;
@@ -110,6 +115,7 @@ h1 {
 .system-error {
     position: absolute;
     margin: 200px auto;
+    padding: 0 20px;
     left: 0;
     right: 0;
     text-align: center;
