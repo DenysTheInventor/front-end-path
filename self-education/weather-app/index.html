@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1 class="weather-header">Check the weather app</h1>
+            <form action="" class="weather-search" >
+                <input class="weather-search__input" type="text" placeholder="Enter city">
+                <button class="weather-search__submit" type="submit">Search</button>
+            </form>
+            <div class="weather-app">
+                <div class="weather-app__header">
+                    <span class="weather-app__city-name">${city.name}</span>
+                    <div class="weather-app__country">
+                        <span class="weather-app__country-name">${city.sys?.country}</span>
+                        <span class="weather-app__country-image">
+                            <img src="" alt="">
+                        </span>
+                    </div>
+                </div>
+                <div class="weather-app__main"> 
+                    <span class="weather-app__temperature">${tempC}°C</span>
+                    <span class="weather-app__icon">
+                        <img src="" alt="">
+                    </span>
+                </div>
+                <div class="weather-app__footer">
+                    <span class="weather-app__feels-like">Feels like: </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader" hidden>
+        <img src="./img/loader.gif" alt="">
+    </div>
+
+    <div class="system-error" hidden>
+        <span class="system-error__text">
+            Ooops. Something went wrong. Try again in 2 seconds!
+        </span>
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
