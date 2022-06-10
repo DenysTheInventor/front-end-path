@@ -44,10 +44,11 @@ h1 {
     width: 70%;
     height: 40px;
     padding: 0 15px;
+    border: none;
 }
 
 .weather-search__input:hover {
-    border: none;
+    border: 1px solid black;
     -webkit-box-shadow: inset 0px 0px 6px -2px #000000; 
     box-shadow: inset 0px 0px 6px -2px #000000;
 }
@@ -106,6 +107,10 @@ h1 {
     border-radius: 10px;
 }
 
+.weather-app__system:hover {
+    border: 2px solid rgb(92, 155, 209);
+}
+
 .loader {
     position: absolute;
     margin: 200px auto;
@@ -126,4 +131,89 @@ h1 {
 .system-error__text {
     color: rgb(232, 23, 23);
     font-weight: 800;
+}
+
+/* RESULTS */
+
+.search-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-results {
+    width: 100%;
+    max-width: 640px;
+    height: 300px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.search-results__header {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-results__list {
+    list-style-type: none;
+}
+
+.search-results__item {
+    height: 30px;
+    margin: 10px;
+    padding: 0 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-results__item-close,
+.search-result__close {
+    color: #ff0101;
+    font-size: 40px;
+}
+
+.search-results__item-close:hover,
+.search-result__close:hover {
+    cursor: pointer;
+}
+
+.results-button {
+    width: 100%;
+    max-width: 320px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(238, 221, 231);
+    font-weight: 800;
+
+    border-radius: 10px;
+    
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -160px;
+}
+
+.results-button:hover {
+    cursor: pointer;
+    border: 2px solid rgb(232, 177, 209);
 }

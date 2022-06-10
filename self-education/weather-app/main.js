@@ -2,12 +2,16 @@ const weatherForm = document.querySelector('.weather-search')
 const weatherFormInput = document.querySelector('.weather-search__input')
 const weatherApp = document.querySelector('.weather-app')
 
+const resultBTN = document.querySelector('.results-button')
+
 const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather'
 const API_KEY = 'afd602ae8eeb088bfbefba1c772e31e9'
 
 const FLAG_URL = 'https://countryflagsapi.com/png'
 
-const GEOCODE_API = 'https://api.opencagedata.com/geocode/v1/json?q=' 
+const GEOCODE_API = 'https://api.opencagedata.com/geocode/v1/json?q='
+
+const results = []
 
 class GEO {
     constructor(url) {
@@ -58,6 +62,10 @@ weatherForm.addEventListener('submit', (event) => {
     getForecast(inputValue)
 })
 
+resultBTN.addEventListener('click', (event) => {
+    toggleResultsWindow()
+})
+
 const disableForm = () => {
     const isDisabled = weatherFormInput.hasAttribute('disabled')
 
@@ -68,6 +76,59 @@ const disableForm = () => {
     else {
         weatherFormInput.setAttribute('disabled', '')
         weatherForm.querySelector('.weather-search__submit').setAttribute('disabled', '')
+    }
+}
+
+const createListItem = (city) => {
+    const item = document.createElement('li')
+          item.classList.add('search-results__item')
+          item.insertAdjacentHTML('afterbegin', `
+            <span class="search-results__item-text">${city.city}</span>
+            <span class="search-results__item-time">${city.timeStamp}</span>
+            <span class="search-results__item-close">&times;</span>
+          `)  
+    
+    return item
+}
+
+const toggleResultsWindow = () => {
+    if (!document.querySelector('.search-modal')) {
+        const resultsModal = document.createElement('div')
+          resultsModal.classList.add('search-modal')
+          resultsModal.insertAdjacentHTML('afterbegin', `
+            <div class="search-results">
+                <div class="search-results__header">
+                    <h2>Search results:</h2>
+                    <span class="search-result__close">&times;</span>    
+                </div>
+                <ul class="search-results__list">
+                    
+                </ul>
+            </div>
+          `)
+    
+        document.body.append(resultsModal)
+
+        const list = document.querySelector('.search-results__list')
+        results.forEach((record) => {
+            const newRecord = createListItem(record)
+            list.append(newRecord)
+        })
+
+        document.body.addEventListener('click', (event) => {
+            const { target } = event
+
+            if(target.classList.contains('search-result__close')) {
+                document.querySelector('.search-modal').remove()
+            }
+
+            if(target.classList.contains('search-results__item-close')) {
+                target.closest('.search-results__item').remove()
+            }
+        })
+    }
+    else {
+        document.querySelector('.search-modal').remove()
     }
 }
 
@@ -104,6 +165,34 @@ const getWeatherImageURL = (code) => {
 
 const getFlagURL = (countryCode) => {
     return `${FLAG_URL}/${countryCode}`
+}
+
+const pad2 = (n) => {
+    return (n < 10 ? '0' : '') + n
+}
+
+const returnDateNow = () => {
+    const date = new Date()
+
+    const month = pad2(date.getMonth()+1)
+    const day = pad2(date.getDate())
+    const year= date.getFullYear()
+
+    return `${date.getHours()}:${date.getMinutes()}. ${day}-${month}-${year}`
+}
+
+const createRecord = (record) => {
+    const newRecord = {
+        city: record.name,
+        country: record.sys.country,
+        timeStamp: returnDateNow()
+    }
+
+    return newRecord
+}
+
+const addRecordToResult = (searchItem) => {
+    results.push(searchItem)
 }
 
 const createWeatherCard = (city) => {
@@ -153,6 +242,7 @@ const getForecast = (city) => {
         }).then((result) => {
             console.log(result)
             createWeatherCard(result)
+            addRecordToResult(createRecord(result))
         }).catch((error) => {
             console.error(error)
             toggleSystemMessage()
