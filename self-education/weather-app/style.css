@@ -45,6 +45,7 @@ h1 {
     height: 40px;
     padding: 0 15px;
     border: none;
+    border-radius: 5px;
 }
 
 .weather-search__input:hover {
@@ -75,6 +76,11 @@ h1 {
     border-radius: 15px;
 }
 
+.weather-app__cover {
+    background-image: linear-gradient(rgba(175, 186, 223, 0.8),rgba(96, 109, 146, 0.8));
+    background-blend-mode: overlay;
+}
+
 .weather-app__header,
 .weather-app__main,
 .weather-app__footer,
@@ -85,7 +91,6 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(191, 214, 234);
 }
 
 .weather-app__city-name,
@@ -105,6 +110,7 @@ h1 {
     justify-content: center;
     margin: 10px auto;
     border-radius: 10px;
+    background-color: rgb(191, 214, 234);
 }
 
 .weather-app__system:hover {
@@ -160,6 +166,20 @@ h1 {
 
     overflow-x: hidden;
     overflow-y: auto;
+
+    animation: simple-scale 0.5s linear alternate;
+}
+
+@keyframes simple-scale {
+    0% {
+      transform: scale(0.25);
+    }
+    50% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .search-results__header {

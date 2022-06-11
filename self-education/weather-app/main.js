@@ -11,7 +11,10 @@ const FLAG_URL = 'https://countryflagsapi.com/png'
 
 const GEOCODE_API = 'https://api.opencagedata.com/geocode/v1/json?q='
 
-const results = []
+let results = []
+if (localStorage.getItem("result") != null) {
+    results = JSON.parse(localStorage.getItem('result')) 
+}
 
 class GEO {
     constructor(url) {
@@ -62,7 +65,7 @@ weatherForm.addEventListener('submit', (event) => {
     getForecast(inputValue)
 })
 
-resultBTN.addEventListener('click', (event) => {
+resultBTN.addEventListener('click', () => {
     toggleResultsWindow()
 })
 
@@ -79,9 +82,14 @@ const disableForm = () => {
     }
 }
 
+const addToLocal = () => {
+    localStorage.setItem('result', JSON.stringify(results))
+}
+
 const createListItem = (city) => {
     const item = document.createElement('li')
           item.classList.add('search-results__item')
+          item.dataset.id = city.id
           item.insertAdjacentHTML('afterbegin', `
             <span class="search-results__item-text">${city.city}</span>
             <span class="search-results__item-time">${city.timeStamp}</span>
@@ -123,7 +131,14 @@ const toggleResultsWindow = () => {
             }
 
             if(target.classList.contains('search-results__item-close')) {
-                target.closest('.search-results__item').remove()
+                const parentItem = target.closest('.search-results__item')
+                const parentItemID = parentItem.dataset.id
+
+                parentItem.remove()
+                results = results.filter(el => el.id != parentItemID)
+                addToLocal()
+
+                console.log(results)
             }
         })
     }
@@ -174,17 +189,23 @@ const pad2 = (n) => {
 const returnDateNow = () => {
     const date = new Date()
 
+    const hours = pad2(date.getHours())
+    const minutes = pad2(date.getMinutes())
+
     const month = pad2(date.getMonth()+1)
     const day = pad2(date.getDate())
     const year= date.getFullYear()
 
-    return `${date.getHours()}:${date.getMinutes()}. ${day}-${month}-${year}`
+    return `${hours}:${minutes}. ${day}-${month}-${year}`
 }
 
 const createRecord = (record) => {
     const newRecord = {
         city: record.name,
         country: record.sys.country,
+        mainTemp: Math.floor(record.main.temp - 273.15),
+        feelsTemp: Math.floor(record.main.feels_like - 273.15), 
+        id: Date.now(),
         timeStamp: returnDateNow()
     }
 
@@ -193,9 +214,12 @@ const createRecord = (record) => {
 
 const addRecordToResult = (searchItem) => {
     results.push(searchItem)
+    addToLocal()
 }
 
 const createWeatherCard = (city) => {
+    weatherApp.classList.add('weather-app__cover')
+
     const { main } = city
     const mainTempC = Math.floor(main.temp - 273.15)
     const feelsTempC = Math.floor(main.feels_like - 273.15)
