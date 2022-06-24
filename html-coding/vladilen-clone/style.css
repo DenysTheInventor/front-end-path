@@ -1,0 +1,369 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: Montserrat;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+h2 {
+    font-size: inherit;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1180px;
+
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #585858;
+    margin: 5px 0 0 0;
+}
+
+.btn-filled {
+    color: #fff;
+    background-color: rgb(248, 116, 14);
+    border-radius: 5px;
+}
+
+.btn-filled:hover {
+    background-color: rgb(249, 120, 22);
+}
+
+/* LEFT SECTION */
+
+.left-section {
+    width: 300px;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: #F5F5F5;
+}
+
+.left-section__user-info {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    font-size: 12px;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-icon img {
+    width: 100%;
+    border-radius: inherit;
+}
+
+.user-info__name {
+    font-weight: 600;
+}
+
+.user-info__block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100%-50px);
+    margin: 0 0 0 10px;
+}
+
+.user-info__icon {
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.user-info__icon:hover {
+    cursor: pointer;
+}
+
+.left-section__menu {
+    width: 100%;
+    margin: 20px 0;
+    list-style-type: none;
+}
+
+.left-section__menu-item {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.left-section__menu-item:hover {
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+.left-section__menu-item a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 300;
+    position: relative;
+    left: 30px;
+}
+
+.left-section__submenu {
+    list-style-type: none;
+    margin: 0 0 0 -30px;
+    display: none;
+}
+
+.menu-show {
+    display: block;
+    transition: 0.5s ease-in-out;
+}
+
+.left-section__submenu-item {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.left-section__submenu-item:hover {
+    text-decoration: underline;
+}
+
+.left-section__submenu-item:nth-child(1) {
+    padding: 30px 0 10px 0;
+}
+
+.menu-item__notifications::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url('./assets/img/notification-icon.png');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.menu-item__messages::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url('./assets/img/message-icon.png');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.menu-item__learning::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url('./assets/img/learning-icon.png');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.menu-item__learning-link::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url('./assets/img/arrow_down.png');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 2px;
+    right: -160px;
+}
+
+.menu-item__purchases::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url('./assets/img/purchase-icon.png');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.left-section__footer {
+    width: 100%;
+    padding: 0 20px 10px 20px;
+}
+
+.left-section__footer-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* MAIN */
+/* header */
+
+.main-section__header {
+    width: 100%;
+    min-height: 300px;
+    padding: 0 80px;
+    background-color: rgb(210, 231, 234);
+}
+
+.main-section__header-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-block {
+    width: 50%;
+    padding: 60px 0 44px;
+}
+
+.main-section__header-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-section__header-cover img {
+    width: 50%;
+}
+
+.header-info__progress {
+    margin: 10px 0;
+}
+
+.header-info__progress-mark {
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    margin: 5px 0 0 0;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.header-info__access {
+    display: flex;
+    width: 50%;
+}
+
+.access-block {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.access-lessons__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(183, 221, 226);
+}
+
+.access__text {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    margin: 10px 0;
+}
+
+/* nav */
+
+.main-section {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.main-section__nav {
+    width: 100%;
+    padding: 0 80px;
+}
+
+.main-section__nav-inner {
+    width: 100%;
+    padding: 50px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main-section__module {
+    width: 45%;
+    padding: 20px;
+    background: rgb(210, 231, 234);
+    border-radius: 10px;
+    margin: 10px 0;
+    transition: 0.5s ease-in-out;
+}
+
+.main-section__module:hover {
+    transform: translateY(-5px);
+} 
+
+.main-section__module-info {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-section__module-info img {
+    width: 100px;
+}
+
+.main-section__module-progress {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.module-text {
+    font-weight: 600;
+}
+
+.module-bar {
+    width: 50%;
+    height: 5px;
+    margin: 5px 0;
+    background-color: #fff;
+}
+
+.current-progress {
+    display: block;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(248, 116, 14);
+    border-radius: inherit;
+}
